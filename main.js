@@ -39,3 +39,18 @@ $("#btnUserAdd").on("click", function (e) {
     },
   });
 });
+
+//Data Show funtion
+function show_data(id) {
+  $.ajax({
+    url: "action.php",
+    method: "post",
+    data: { id: id, type: "SHOW_DATA" }, // Include type here
+    dataType: "text",
+    success: function (response) {
+      // console.log(response);
+      $("#tbody").html(response);
+    },
+  });
+}
+show_data();
