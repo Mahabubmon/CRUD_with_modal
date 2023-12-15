@@ -21,3 +21,42 @@ if ($_POST['type'] == "USER_CREATE") {
     echo json_encode($arr);
 }
 //End Create function
+//user data show
+if ($_POST['type'] == "SHOW_DATA") {
+
+    $sql = "SELECT * FROM user_tbl ORDER BY id DESC";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        // $id = $_POST['id'];
+        $output = "";
+        while ($res = mysqli_fetch_assoc($result)) {
+
+            ?>
+            <tr>
+                <td>
+                    <?= $res['id']; ?>
+                </td>
+                <td>
+                    <?= $res['name']; ?>
+                </td>
+                <td>
+                    <?= $res['username']; ?>
+                </td>
+                <td>
+                    <?= $res['email']; ?>
+                </td>
+                <td>
+                    <?= $res['address']; ?>
+                </td>
+                <td>
+                    <button class='btn btn-warning btn-edit' id='btnedit' data-id="<?= $res['id']; ?>">Edit</button>
+                    <button id='btndel' class='btn btn-danger btn-delete' data-id="<?= $res['id']; ?>">Delete</button>
+                </td>
+            </tr>
+
+        <?php }
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
