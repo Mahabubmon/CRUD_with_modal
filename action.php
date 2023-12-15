@@ -20,3 +20,4 @@ if ($_POST['type'] == "USER_CREATE") {
     }
     echo json_encode($arr);
 }
+//End Create function
