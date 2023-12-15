@@ -54,3 +54,24 @@ function show_data(id) {
   });
 }
 show_data();
+
+//Sweet alert function
+function sweetAlertSuccess(msg) {
+  Swal.fire({
+    position: "top-end",
+    icon: "success",
+    title: msg,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+}
+
+function sweetAlertErrors(msg) {
+  Swal.fire({
+    position: "top-end",
+    icon: "error",
+    title: msg,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+}
