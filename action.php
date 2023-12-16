@@ -60,3 +60,24 @@ if ($_POST['type'] == "SHOW_DATA") {
         echo "Error: " . mysqli_error($conn);
     }
 }
+
+
+//delete portion
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
+
+    $sql = "DELETE FROM student WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+
+        $arr = array('status' => 'success', 'msg' => 'Record deleted successfully!');
+    } else {
+        echo "Error: " . mysqli_error($conn);
+        $arr = array('status' => 'error', 'msg' => 'Error!');
+    }
+} else {
+    $arr = array('status' => 'error', 'msg' => 'Invalid request!');
+}
+
+echo json_encode($arr);
