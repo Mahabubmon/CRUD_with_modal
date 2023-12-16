@@ -58,8 +58,6 @@ show_data();
 //Delete functionality
 $(document).on("click", ".btn-delete", function () {
   let userId = $(this).data("id");
-
-  console.log(userId);
   $.ajax({
     url: "action.php",
     method: "post",

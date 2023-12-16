@@ -62,7 +62,7 @@ if ($_POST['type'] == "SHOW_DATA") {
 }
 
 
-//delete portion
+//delete portion start
 if ($_POST['type'] == 'DELETE_DATA') {
     $id = $_POST['id'];
 
@@ -81,3 +81,5 @@ if ($_POST['type'] == 'DELETE_DATA') {
 }
 
 echo json_encode($arr);
+
+//delete portion end
