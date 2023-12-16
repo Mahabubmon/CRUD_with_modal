@@ -55,6 +55,26 @@ function show_data(id) {
 }
 show_data();
 
+//Delete functionality
+$(document).on("click", ".btn-delete", function () {
+  let userId = $(this).data("id");
+  $.ajax({
+    url: "delete.php",
+    method: "post",
+    data: { id: userId },
+    dataType: "json",
+    success: function (response) {
+      if (response.status == "success") {
+        sweetAlertSuccess(response.msg);
+
+        show_data();
+      } else {
+        sweetAlertErrors(response.msg);
+      }
+    },
+  });
+});
+
 //Sweet alert function
 function sweetAlertSuccess(msg) {
   Swal.fire({
