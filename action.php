@@ -72,14 +72,18 @@ if ($_POST['type'] == 'DELETE_DATA') {
     if ($result) {
 
         $arr = array('status' => 'success', 'msg' => 'Record deleted successfully!');
+        echo json_encode($arr);
+
     } else {
         echo "Error: " . mysqli_error($conn);
         $arr = array('status' => 'error', 'msg' => 'Error!');
+        echo json_encode($arr);
+
     }
 } else {
     $arr = array('status' => 'error', 'msg' => 'Invalid request!');
+    echo json_encode($arr);
 }
 
-echo json_encode($arr);
 
 //delete portion end

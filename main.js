@@ -1,3 +1,7 @@
+$(document).ready(function () {
+  show_data();
+});
+
 function userModal() {
   $("#UserModal").show();
 }
@@ -27,10 +31,12 @@ $("#btnUserAdd").on("click", function (e) {
     success: function (response) {
       if (response.status == "success") {
         console.log(response);
+        // Clear the form input fields
         $("#name").val("");
         $("#userName").val("");
         $("#email").val("");
         $("#address").val("");
+
         show_data();
         sweetAlertSuccess(response.msg);
       } else {
@@ -53,7 +59,6 @@ function show_data(id) {
     },
   });
 }
-show_data();
 
 //Delete functionality
 $(document).on("click", ".btn-delete", function () {
