@@ -58,10 +58,12 @@ show_data();
 //Delete functionality
 $(document).on("click", ".btn-delete", function () {
   let userId = $(this).data("id");
+
+  console.log(userId);
   $.ajax({
-    url: "delete.php",
+    url: "action.php",
     method: "post",
-    data: { id: userId },
+    data: { id: userId, type: "DELETE_DATA" },
     dataType: "json",
     success: function (response) {
       if (response.status == "success") {

@@ -63,10 +63,10 @@ if ($_POST['type'] == "SHOW_DATA") {
 
 
 //delete portion
-if (isset($_POST['id'])) {
+if ($_POST['type'] == 'DELETE_DATA') {
     $id = $_POST['id'];
 
-    $sql = "DELETE FROM student WHERE id = $id";
+    $sql = "DELETE FROM user_tbl WHERE id = $id";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
