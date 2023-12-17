@@ -13,10 +13,61 @@ function closeButton() {
 }
 
 //insert the data
+// $("#btnUserAdd").on("click", function (e) {
+//   e.preventDefault();
+
+//   let mydata = {};
+//   mydata.name = $("#name").val();
+//   mydata.userName = $("#userName").val();
+//   mydata.email = $("#email").val();
+//   mydata.address = $("#address").val();
+//   mydata.type = "USER_CREATE";
+
+//   $.ajax({
+//     url: "action.php",
+//     method: "post",
+//     data: mydata,
+//     dataType: "json",
+//     success: function (response) {
+//       if (response.status == "success") {
+//         console.log(response);
+//         // Clear the form input fields
+//         $("#name").val("");
+//         $("#userName").val("");
+//         $("#email").val("");
+//         $("#address").val("");
+
+//         show_data();
+//         sweetAlertSuccess(response.msg);
+//       } else {
+//         sweetAlertErrors(response.msg);
+//       }
+//     },
+//   });
+// });
+
+//data Insert
 $("#btnUserAdd").on("click", function (e) {
   e.preventDefault();
 
-  let mydata = {};
+  var fail = false;
+  var fail_log = "";
+  $("#UserModal").find("select, textarea, input").removeClass("error_msg");
+  $("#UserModal")
+    .find("select, textarea, input")
+    .each(function () {
+      if ($(this).prop("required")) {
+        if (!$(this).val()) {
+          fail = true;
+          name = $(this).attr("id");
+          fail_log += name + " is required \n";
+          $("#" + name).addClass("error_msg");
+          console.log(fail_log);
+        }
+      }
+    });
+
+  let mydata = {}; // Change variable name to mydata
   mydata.name = $("#name").val();
   mydata.userName = $("#userName").val();
   mydata.email = $("#email").val();
@@ -26,19 +77,18 @@ $("#btnUserAdd").on("click", function (e) {
   $.ajax({
     url: "action.php",
     method: "post",
-    data: mydata,
+    data: mydata, // Corrected variable name
     dataType: "json",
     success: function (response) {
+      // console.log(response);
+
       if (response.status == "success") {
-        console.log(response);
-        // Clear the form input fields
+        sweetAlertSuccess(response.msg);
         $("#name").val("");
         $("#userName").val("");
         $("#email").val("");
         $("#address").val("");
-
         show_data();
-        sweetAlertSuccess(response.msg);
       } else {
         sweetAlertErrors(response.msg);
       }

@@ -10,7 +10,6 @@ if ($_POST['type'] == "USER_CREATE") {
     $email = $_POST['email'];
     $address = $_POST['address'];
 
-
     $sql = "INSERT INTO `user_tbl`(`name`, `username`, `email`, `address`) VALUES ('$name','$username','$email','$address')";
 
     if (mysqli_query($conn, $sql)) {
