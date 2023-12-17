@@ -80,6 +80,25 @@ $(document).on("click", ".btn-delete", function () {
   });
 });
 
+//edit functionality
+$(document).on("click", ".btn-edit", function () {
+  let userId = $(this).data("id");
+  $.ajax({
+    url: "edit.php",
+    method: "post",
+    dataType: "json",
+    data: { id: userId },
+    success: function (response) {
+      $("#name").val(response.name);
+      $("#email").val(response.email);
+      $("#password").val(response.password);
+      $("#btnadd").hide();
+      $("#btnUpdate").show();
+      $("#btnUpdate").data("id", userId);
+    },
+  });
+});
+
 //Sweet alert function
 function sweetAlertSuccess(msg) {
   Swal.fire({
