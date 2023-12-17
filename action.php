@@ -87,3 +87,21 @@ if ($_POST['type'] == 'DELETE_DATA') {
 
 
 //delete portion end
+
+//edit portion start
+if ($_POST['type'] == 'EDIT_DATA') {
+    $id = $_POST['id'];
+
+    $data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `name`, `username`, `email`, `address` FROM `user_tbl` WHERE id = '$id'"));
+
+    $arr = array(
+        'name' => $data['name'],
+        'username' => $data['username'],
+        'email' => $data['email'],
+        'address' => $data['address']
+    );
+    echo json_encode($arr);
+
+}
+
+//edit portion end

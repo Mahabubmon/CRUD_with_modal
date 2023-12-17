@@ -83,18 +83,17 @@ $(document).on("click", ".btn-delete", function () {
 //edit functionality
 $(document).on("click", ".btn-edit", function () {
   let userId = $(this).data("id");
+  userModal();
   $.ajax({
     url: "edit.php",
     method: "post",
     dataType: "json",
-    data: { id: userId },
+    data: { id: userId, type: "EDIT_DATA" },
     success: function (response) {
       $("#name").val(response.name);
+      $("#userName").val(response.username);
       $("#email").val(response.email);
-      $("#password").val(response.password);
-      $("#btnadd").hide();
-      $("#btnUpdate").show();
-      $("#btnUpdate").data("id", userId);
+      $("#address").val(response.address);
     },
   });
 });
