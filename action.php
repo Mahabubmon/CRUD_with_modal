@@ -16,7 +16,7 @@ if ($_POST['type'] == "USER_CREATE") {
     if (mysqli_query($conn, $sql)) {
         $arr = array('status' => 'success', 'msg' => 'Data Insert Successfully!');
     } else {
-        $arr = array('status' => 'error', 'msg' => 'Data Not Insert');
+        $arr = array('status' => 'error', 'msg' => 'Data Not Insert: ' . mysqli_error($conn));
     }
     echo json_encode($arr);
 }
